@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuthTokenExchange.Library", "OAuthTokenExchange.Library\OAuthTokenExchange.Library.csproj", "{D06AA6BB-7B5F-4674-B7F7-5F45C9EC40B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuthTokenExchange.Test", "OAuthTokenExchange.Test\OAuthTokenExchange.Test.csproj", "{4BBA49E3-FAB5-4005-8089-6F4267888716}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D06AA6BB-7B5F-4674-B7F7-5F45C9EC40B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D06AA6BB-7B5F-4674-B7F7-5F45C9EC40B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D06AA6BB-7B5F-4674-B7F7-5F45C9EC40B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D06AA6BB-7B5F-4674-B7F7-5F45C9EC40B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BBA49E3-FAB5-4005-8089-6F4267888716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BBA49E3-FAB5-4005-8089-6F4267888716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BBA49E3-FAB5-4005-8089-6F4267888716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BBA49E3-FAB5-4005-8089-6F4267888716}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
