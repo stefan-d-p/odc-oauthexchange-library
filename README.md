@@ -128,3 +128,16 @@ Retrieve OpenID Connect Configuration of Identity Provider
 * `UserInfoEndpoint` - User Info endpoint url
 * `IntrospectionEndpoint` - Introspection endpoint url
 * `EndSessionEndpoint` - End session endpoint url
+
+# Run Tests
+
+NUnit tests need some sensitive configurations before you can run it
+
+```powershell
+dotnet user-secrets init
+dotnet user-secrets set OAuthDiscoveryUrl "<OpenID Connect Discovery document endpoint Url>"
+dotnet user-secrets set OAuthClientId "<Client Id>"
+dotnet user-secrets set OAuthClientSecret "<Client Secret>"
+```
+
+Alternatively to user secrets you can set environment variables for all three configuration items.
