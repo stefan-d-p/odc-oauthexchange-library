@@ -88,7 +88,6 @@ public class OAuthTokenExchange : IOAuthTokenExchange
         TokenIntrospectionResponse response = AsyncUtil.RunSync(() => _httpClient.IntrospectTokenAsync(request));
         if(response.IsError) throw new Exception(response.Error);
         return response.IsActive;
-        UserInfoResponse x;
     }
     
     
