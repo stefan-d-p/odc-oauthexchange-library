@@ -112,7 +112,8 @@ Retrieve OpenID Connect Configuration of Identity Provider
 
 **Input parameters**
 
-* `wellKnownEndpointUrl` - Well-Known OpenID Connect configuration endpoint URL
+* `Address` - Identity Provider Well-Known Configuaton Endpoint Url
+* `Policy` - Optional Validation settings
 
 **Result**
 
