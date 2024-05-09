@@ -70,7 +70,7 @@ namespace Without.Systems.OAuthTokenExchange
             IconResourceName = "Without.Systems.Resources.OAuthAction.png")]
         public DiscoveryDocument GetDiscoveryDocument(
             [OSParameter(
-                Description = "Well-Known OpenID Connect configuration endpoint URL")]
-            string wellKnownEndpointUrl);
+                Description = "Get Well-Known Configuration document request")]
+            DiscoveryRequest discoveryRequest);
     }
 }

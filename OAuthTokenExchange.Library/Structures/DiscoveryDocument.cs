@@ -7,7 +7,7 @@ public struct DiscoveryDocument
 {
     [OSStructureField(Description = "URL of the OAuth 2.0 Authorization Endpoint",
         DataType = OSDataType.Text)]
-    public string? AuthorizationEndpoint;
+    public string? AuthorizeEndpoint;
 
     [OSStructureField(Description =
         "Array containing a list of the clim-names that the OpenID provider may be able to supply.")]

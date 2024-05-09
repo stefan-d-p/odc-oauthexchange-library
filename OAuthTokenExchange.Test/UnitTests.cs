@@ -1,4 +1,7 @@
+using System.Diagnostics;
+using System.Xml;
 using Microsoft.Extensions.Configuration;
+using Without.Systems.OAuthTokenExchange.Structures;
 
 namespace Without.Systems.OAuthTokenExchange.Test;
 
@@ -8,6 +11,8 @@ public class Tests
     private string _discoveryUrl;
     private string _clientId;
     private string _clientSecret;
+
+    private DiscoveryRequest _discoveryRequest;
     
     [SetUp]
     public void Setup()
@@ -22,6 +27,43 @@ public class Tests
         _clientId = configuration["OAuthClientId"] ?? throw new InvalidOperationException();
         _clientSecret = configuration["OAuthClientSecret"] ?? throw new InvalidOperationException();
 
+        _discoveryRequest = new DiscoveryRequest
+        {
+            Address = _discoveryUrl,
+            Policy = new DiscoveryDocumentPolicy
+            {
+                RequireHttps = false,
+                ValidateEndpoints = false,
+                RequireKeySet = false,
+                ValidateIssuerName = false,
+                AllowHttpOnLoopback = true
+            }
+        };
+        
+    }
+
+    [Test]
+    public void Retrieve_DiscoveryDocument()
+    {
+        
+        
+        var result = _actions.GetDiscoveryDocument(_discoveryRequest);
+    }
+
+    [Test]
+    public void Client_Credentials_Flow()
+    {
+        var disco = _actions.GetDiscoveryDocument(_discoveryRequest);
+        Debug.Assert(disco.TokenEndpoint != null, "disco.TokenEndpoint != null");
+        ClientCredentialsRequest request = new ClientCredentialsRequest
+        {
+            Address = disco.TokenEndpoint,
+            ClientId = _clientId,
+            ClientSecret = _clientSecret,
+            Scope = "https://graph.microsoft.com/.default"
+        };
+
+        var result = _actions.RequestClientCredentialsToken(request);
     }
     
 }

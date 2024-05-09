@@ -24,6 +24,8 @@ public class OAuthTokenExchange : IOAuthTokenExchange
                     opt => opt.Condition(src => !string.IsNullOrEmpty(src.CodeVerifier)));
             cfg.CreateMap<RefreshRequest, RefreshTokenRequest>();
             cfg.CreateMap<TokenRevocationRequest, RevocationRequest>();
+            cfg.CreateMap<DiscoveryRequest, DiscoveryDocumentRequest>();
+            cfg.CreateMap<DiscoveryDocumentPolicy, DiscoveryPolicy>();
             cfg.CreateMap<DiscoveryDocumentResponse, DiscoveryDocument>();
             cfg.CreateMap<TokenResponse, TokenResult>()
                 .ForMember(dest => dest.ExpiresOn, opt => opt.MapFrom(src => DateTime.Now.AddSeconds(src.ExpiresIn)));
@@ -74,9 +76,10 @@ public class OAuthTokenExchange : IOAuthTokenExchange
         if(response.IsError) throw new Exception(response.Error);
     }
 
-    public DiscoveryDocument GetDiscoveryDocument(string wellKnownEndpointUrl)
+    public DiscoveryDocument GetDiscoveryDocument(DiscoveryRequest discoveryRequest)
     {
-        DiscoveryDocumentResponse response = AsyncUtil.RunSync(() => _httpClient.GetDiscoveryDocumentAsync(wellKnownEndpointUrl));
+        var request = _automapper.Map<DiscoveryDocumentRequest>(discoveryRequest);
+        DiscoveryDocumentResponse response = AsyncUtil.RunSync(() => _httpClient.GetDiscoveryDocumentAsync(request));
         if (response.IsError) throw new Exception(response.Error);
         return _automapper.Map<DiscoveryDocument>(response);
     }

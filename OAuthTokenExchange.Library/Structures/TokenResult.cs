@@ -7,7 +7,7 @@ public struct TokenResult
 {
     [OSStructureField(Description = "Access Token",
         DataType = OSDataType.Text)]
-    public string? AcessToken;
+    public string? AccessToken;
 
     [OSStructureField(Description = "Identity Token",
         DataType = OSDataType.Text)]
