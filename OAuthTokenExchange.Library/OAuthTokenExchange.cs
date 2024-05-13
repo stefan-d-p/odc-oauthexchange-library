@@ -27,8 +27,7 @@ public class OAuthTokenExchange : IOAuthTokenExchange
             cfg.CreateMap<DiscoveryRequest, DiscoveryDocumentRequest>();
             cfg.CreateMap<DiscoveryDocumentPolicy, DiscoveryPolicy>();
             cfg.CreateMap<DiscoveryDocumentResponse, DiscoveryDocument>();
-            cfg.CreateMap<TokenResponse, TokenResult>()
-                .ForMember(dest => dest.ExpiresOn, opt => opt.MapFrom(src => DateTime.Now.AddSeconds(src.ExpiresIn)));
+            cfg.CreateMap<TokenResponse, TokenResult>();
         });
         
         _automapper = mapperConfiguration.CreateMapper();

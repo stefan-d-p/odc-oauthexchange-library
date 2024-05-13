@@ -60,7 +60,7 @@ public class Tests
             Address = disco.TokenEndpoint,
             ClientId = _clientId,
             ClientSecret = _clientSecret,
-            Scope = "https://graph.microsoft.com/.default"
+            Scope = "openid email profile offline_access https://graph.microsoft.com/.default"
         };
 
         var result = _actions.RequestClientCredentialsToken(request);

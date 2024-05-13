@@ -47,7 +47,7 @@ Exchange an authorization code for an access token
 * `IssuedTokenType` - Type of issued token
 * `TokenType` - Type of token
 * `RefreshToken` - Refresh token - only applicable in authorization code flow with requested offline scope.
-* `ExpiresOn` - Date and time when access token expires
+* `ExpiresIn` - Seconds until the access token will expire
 
 ### RequestRefreshToken
 
@@ -68,7 +68,7 @@ Refresh an access token with a refresh token
 * `IssuedTokenType` - Type of issued token
 * `TokenType` - Type of token
 * `RefreshToken` - Refresh token - only applicable in authorization code flow with requested offline scope.
-* `ExpiresOn` - Date and time when access token expires
+* `ExpiresIn` - Seconds until the access token will expire
 
 ### RevokeToken
 

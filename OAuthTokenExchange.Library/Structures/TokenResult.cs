@@ -29,7 +29,7 @@ public struct TokenResult
         DataType = OSDataType.Text)]
     public string? RefreshToken;
     
-    [OSStructureField(Description = "Access Token Expires On",
-        DataType = OSDataType.DateTime)]
-    public DateTime? ExpiresOn;
+    [OSStructureField(Description = "Expires In",
+        DataType = OSDataType.Integer)]
+    public int? ExpiresIn;
 }
