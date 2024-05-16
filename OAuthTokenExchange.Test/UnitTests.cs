@@ -65,5 +65,11 @@ public class Tests
 
         var result = _actions.RequestClientCredentialsToken(request);
     }
+
+    [Test]
+    public void Generate_Proof_Key()
+    {
+        var result = _actions.GenerateProofKeyCode();
+    }
     
 }
