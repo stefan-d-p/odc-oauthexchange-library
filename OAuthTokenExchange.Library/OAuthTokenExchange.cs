@@ -48,7 +48,7 @@ public class OAuthTokenExchange : IOAuthTokenExchange
     {
         var request = _automapper.Map<ClientCredentialsTokenRequest>(clientCredentialsRequest);
         TokenResponse response = AsyncUtil.RunSync(() => _httpClient.RequestClientCredentialsTokenAsync(request));
-        if (response.IsError) throw new Exception(response.Error);
+        if (response.IsError) throw new Exception($"{response.Error}:{response.ErrorDescription}");
         return _automapper.Map<TokenResult>(response);
     }
     
@@ -56,7 +56,7 @@ public class OAuthTokenExchange : IOAuthTokenExchange
     {
         var request = _automapper.Map<AuthorizationCodeTokenRequest>(authorizationCodeRequest);
         TokenResponse response = AsyncUtil.RunSync(() => _httpClient.RequestAuthorizationCodeTokenAsync(request));
-        if (response.IsError) throw new Exception(response.Error);
+        if (response.IsError) throw new Exception($"{response.Error}:{response.ErrorDescription}");
         return _automapper.Map<TokenResult>(response);
     }
     
@@ -64,7 +64,7 @@ public class OAuthTokenExchange : IOAuthTokenExchange
     {
         var request = _automapper.Map<RefreshTokenRequest>(refreshRequest);
         TokenResponse response = AsyncUtil.RunSync(() => _httpClient.RequestRefreshTokenAsync(request));
-        if (response.IsError) throw new Exception(response.Error);
+        if (response.IsError) throw new Exception($"{response.Error}:{response.ErrorDescription}");
         return _automapper.Map<TokenResult>(response);
     }
     
@@ -72,14 +72,14 @@ public class OAuthTokenExchange : IOAuthTokenExchange
     {
         var request = _automapper.Map<TokenRevocationRequest>(revocationRequest);
         TokenRevocationResponse response = AsyncUtil.RunSync(() => _httpClient.RevokeTokenAsync(request));
-        if(response.IsError) throw new Exception(response.Error);
+        if(response.IsError) throw new Exception($"{response.Error}");
     }
 
     public DiscoveryDocument GetDiscoveryDocument(DiscoveryRequest discoveryRequest)
     {
         var request = _automapper.Map<DiscoveryDocumentRequest>(discoveryRequest);
         DiscoveryDocumentResponse response = AsyncUtil.RunSync(() => _httpClient.GetDiscoveryDocumentAsync(request));
-        if (response.IsError) throw new Exception(response.Error);
+        if (response.IsError) throw new Exception($"{response.Error}");
         return _automapper.Map<DiscoveryDocument>(response);
     }
     
