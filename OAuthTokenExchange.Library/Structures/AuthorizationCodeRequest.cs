@@ -1,4 +1,5 @@
-﻿using OutSystems.ExternalLibraries.SDK;
+﻿using System.Linq.Expressions;
+using OutSystems.ExternalLibraries.SDK;
 
 namespace Without.Systems.OAuthTokenExchange.Structures;
 
@@ -20,6 +21,14 @@ public struct AuthorizationCodeRequest
         DataType = OSDataType.Text,
         IsMandatory = true)]
     public string ClientSecret;
+
+    [OSStructureField(
+        Description =
+            "Specify if client id and secret are sent via the Authorization header or in the body. Valid values are AuthorizationHeader and PostBody. Default is PostBody",
+        DataType = OSDataType.Text,
+        IsMandatory = false,
+        DefaultValue = "PostBody")]
+    public string ClientCredentialStyle;
 
     [OSStructureField(Description = "Authorization code retrieved from the authorization server",
         DataType = OSDataType.Text,

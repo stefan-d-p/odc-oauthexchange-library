@@ -21,7 +21,10 @@ public class OAuthTokenExchange : IOAuthTokenExchange
             cfg.CreateMap<ClientCredentialsRequest, ClientCredentialsTokenRequest>();
             cfg.CreateMap<AuthorizationCodeRequest, AuthorizationCodeTokenRequest>()
                 .ForMember(dest => dest.CodeVerifier,
-                    opt => opt.Condition(src => !string.IsNullOrEmpty(src.CodeVerifier)));
+                    opt => opt.Condition(src => !string.IsNullOrEmpty(src.CodeVerifier)))
+                .ForMember(dest => dest.ClientCredentialStyle,
+                    opt => opt.MapFrom(src => MapClientCredentialStyle(src.ClientCredentialStyle)));
+            
             cfg.CreateMap<RefreshRequest, RefreshTokenRequest>();
             cfg.CreateMap<TokenRevocationRequest, RevocationRequest>();
             cfg.CreateMap<DiscoveryRequest, DiscoveryDocumentRequest>();
@@ -90,8 +93,18 @@ public class OAuthTokenExchange : IOAuthTokenExchange
         if(response.IsError) throw new Exception(response.Error);
         return response.IsActive;
     }
-    
-    
+
+    private ClientCredentialStyle MapClientCredentialStyle(string clientCredentialStyle)
+    {
+        if (Enum.TryParse(clientCredentialStyle, out ClientCredentialStyle credentialStyle))
+        {
+            return credentialStyle;
+        }
+        else
+        {
+            throw new ArgumentException($"{clientCredentialStyle} is not a valid ClientCredentialStyle");
+        }
+    }
 
     
 }
