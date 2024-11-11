@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
 
@@ -11,6 +11,7 @@
 
         <RootNamespace>Without.Systems.OAuthTokenExchange.Test</RootNamespace>
       <UserSecretsId>c96e347d-9756-4ee5-ae70-b1f3b122c0a9</UserSecretsId>
+      <LangVersion>12</LangVersion>
   </PropertyGroup>
 
     <ItemGroup>
