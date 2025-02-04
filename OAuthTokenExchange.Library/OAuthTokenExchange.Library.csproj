@@ -19,7 +19,6 @@
       <None Remove="Resources\OAuth.png" />
       <EmbeddedResource Include="Resources\OAuth.png" />
       <None Remove="Resources\OAuthAction.png" />
-      <EmbeddedResource Include="Resources\OAuthAction.png" />
     </ItemGroup>
 
 </Project>
